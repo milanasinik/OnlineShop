@@ -7,7 +7,6 @@ import path from 'path';
 import orderRouter from './routers/orderRouter.js';
 import uploadRouter from './routers/uploadRouter.js';
 import shippingRouter from './routers/shippingRouter.js';
-import cartRouter from './routers/cartRouter.js';
 import categoryRouter from './routers/categoryRouter.js';
 
 dotenv.config();
@@ -23,8 +22,6 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost:27017/onlinesho
 app.use('/api/uploads', uploadRouter);
 
 app.use('/api/users', userRouter);
-
-app.use('/api/carts', cartRouter);
 
 app.use('/api/shippingaddress', shippingRouter);
 

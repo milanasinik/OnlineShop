@@ -16,6 +16,7 @@ export default function ProductEditScreen(props) {
     const [category, setCategory] = useState('');
     const [countInStock, setCountInStock] = useState('');
     const [description, setDescription] = useState('');
+    const [sold, setSold] = useState('');
 
     const productDetails = useSelector((state) => state.productDetails);
     const { loading, error, product } = productDetails;
@@ -50,6 +51,7 @@ export default function ProductEditScreen(props) {
             setImage(product.image);
             setCategory(product.category);
             setCountInStock(product.countInStock);
+            setSold(product.sold);
             setDescription(product.description);
         }
         if (!categoriesList[0]) {
@@ -66,6 +68,7 @@ export default function ProductEditScreen(props) {
                 image,
                 category,
                 countInStock,
+                sold,
                 description,
             })
         );
@@ -100,7 +103,7 @@ export default function ProductEditScreen(props) {
         <div>
             <form className="form" onSubmit={submitHandler}>
                 <div>
-                    <h1>Edit product {productId}</h1>
+                    <h1>Edit product :{name}</h1>
                 </div>
                 {loadingUpdate && <LoadingBox></LoadingBox>}
                 {errorUpdate && <MessageBox variant="danger">{errorUpdate}</MessageBox>}
@@ -175,6 +178,16 @@ export default function ProductEditScreen(props) {
                                 placeholder="Enter count in stock"
                                 value={countInStock}
                                 onChange={(e) => setCountInStock(e.target.value)}
+                            ></input>
+                        </div>
+                        <div>
+                            <label htmlFor="sold">Sold Items</label>
+                            <input
+                                type="text"
+                                id="sold"
+                                placeholder='0'
+                                value={sold}
+                                onChange={(e) => setSold(e.target.value)}
                             ></input>
                         </div>
                         <div>

@@ -28,7 +28,7 @@ body{
 }
 header{
   grid-area: header;
-  background-color: #203040;
+  background-color: #002814;
 }
 main{
   grid-area: main;
@@ -36,7 +36,7 @@ main{
 }
 footer{
   grid-area: footer;
-  background-color: #203040;
+  background-color: #002814;
   color: #ffffff;
 }
 /*Common*/
@@ -47,13 +47,17 @@ h1{
 h2{
   font-size: 1.6rem;
   padding: 1rem 0;
+  color: #0057e7;
+}
+h2:hover{
+  color:#d62d20;
 }
 a{
   text-decoration: none;
   padding-right: 0.4rem;
 }
 a:hover{
-  color: coral;
+  color: #d62d20;
 }
 ul{
   padding: 0;
@@ -85,13 +89,19 @@ button:hover{
   border: 0.1rem #404040 solid;
 }
 button.primary{
-  background-color: #f0c040;
+  background-color: #ffa700;
 }
 button.block{
   width: 100%;
 }
 button.small{
   font-size: 1.2rem;
+  background-color: #008744;
+  color: #ffffff;
+}
+button.small-d{
+  background-color:#d62d20;
+  color: #ffffff;
 }
 /*Header*/
 header a{
@@ -103,9 +113,12 @@ a.brand{
   font-size: 3rem;
   font-weight:bold;
 }
+a.brand:hover{
+  color: #008744;
+}
 
 .badge{
-  background-color: #f02020;
+  background-color: #d62d20;
   color:#ffffff;
   border-radius: 50%;
   padding: 0.2rem 0.7rem;
@@ -115,7 +128,7 @@ a.brand{
 
 .row{
   display:flex;
-  flex-wrap: wrap;
+ 
   font-size: 1.2rem;
   justify-content:space-between;
   align-items: center;
@@ -131,12 +144,17 @@ a.brand{
 }
 .row.top{
   align-items: flex-start;
+  justify-content: center;
 }
 .col-2{
+  align-items: center;
+
   flex: 2 1 50rem;
+  
 }
 .col-1{
   flex: 1 1 25rem;
+  flex-wrap: wrap;
   max-width: 30rem;
 }
 .min-30{
@@ -191,7 +209,9 @@ img.medium{
 }
 img.large{
   max-width: 70rem;
+  max-height: 70rem;
   width: 100%;
+  
 }
 img.small{
   max-width: 5rem;
@@ -220,17 +240,17 @@ img.small{
   margin:0.1rem;
 }
 .rating span :last-child{
-  color: #f0c040;
+  color: #ffa700;
 }
 /* Alert */
 .loading{
   display: block !important;
 }
 .success{
-  color:#20a202
+  color:#38bdac
 }
 .danger{
-  color:#a02020
+  color:#d62d20
 }
 .alert{
   padding: 1rem;
@@ -242,7 +262,7 @@ img.small{
   background-color: #e0e0ff;
 }
 .alert-danger{
-  color: #a02020;
+  color: #d62d20;
   background-color: #ffe0e0e0;
 }
 .alert-success{
@@ -297,23 +317,25 @@ img.small{
   font-weight: bold;
 }
 .checkout-steps > div.active{
-  border-top-color: #f08000;
-  color: #f08000;
+  border-top-color: #ffa700;
+  color: #ffa700;
 }
 
 /*Table*/
 .table{
   width: 100%;
+  justify-content: center;
   border-collapse: collapse;
 }
 .table tbody tr:nth-of-type(odd){
   background-color: #f4f4f4;
 }
 .table td, .table th{
-  text-align: left;
+  text-align: center;
   border: 0.1 rem solid #e4e4e4;
   padding: 0.5rem;
 }
+
 .table button{
   margin: 0 0.2rem;
 }

@@ -42,6 +42,13 @@ orderRouter.post(
         user: req.user._id,
       });
       const createdOrder = await order.save();
+      /*for(const index in createdOrder.orderItems){
+        const item = createdOrder.orderItems[index];
+        const product = await Product.findById(item.product._id);
+        product.countInStock -= item.qty;
+        product.sold += item.qty;
+        await product.save();
+      }*/
       res
         .status(201)
         .send({ message: "New order created", order: createdOrder });
@@ -72,7 +79,7 @@ orderRouter.put(
     const order = await Order.findById(req.params.id);
     if (order) {
       order.isPaid = true;
-      order.paitAt = Date.now();
+      order.paidAt = Date.now();
       order.paymentResult = {
         id: req.body.id,
         status: req.body.status,
@@ -82,7 +89,7 @@ orderRouter.put(
       const updatedOrder = await order.save();
       for(const index in updatedOrder.orderItems){
         const item = updatedOrder.orderItems[index];
-        const product = await Product.findById(item.product);
+        const product = await Product.findById(item.product._id);
         product.countInStock -= item.qty;
         product.sold += item.qty;
         await product.save();

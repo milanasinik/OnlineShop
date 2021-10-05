@@ -42,8 +42,8 @@ export default function OrderListScreen(props) {
                         <table className="table">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>USER</th>
+                                    <th>NUM PRODUCTS</th>
                                     <th>DATE</th>
                                     <th>TOTAL</th>
                                     <th>PAID</th>
@@ -55,12 +55,14 @@ export default function OrderListScreen(props) {
                             <tbody>
                                 {orders.map((order) => (
                                     <tr key={order._id}>
-                                        <td>{order._id}</td>
-                                        <td>{order.user.name}</td>
+                            
+                                        <td>{order.user != null ? order.user.name : 'user deleted'}</td>
+                                        <td>{order.orderItems.length}</td>
                                         <td>{order.createdAt.substring(0, 10)}</td>
-                                        <td>{order.totalPrice}</td>
-                                        <td>{order.isPaid ? 'Yes' : 'No'}</td>
-                                        <td>{order.isDelivered ? order.deliveredAt.substring(0, 10) : 'No'}</td>
+                                        <td>{order.totalPrice} RSD</td>
+                                        <td>{order.isPaid ? (
+                                            <span className = "success">{order.paidAt.substring(0,10)}</span>) : (<span className="danger">Not Paid</span>)}</td>
+                                        <td>{order.isDelivered ? (<span className = "success">{order.deliveredAt.substring(0,10)}</span>) : (<span className="danger">Not Delivered</span>)}</td>
                                         <td>
                                             <button
                                                 type="button"
@@ -71,7 +73,7 @@ export default function OrderListScreen(props) {
                                         </button>
                                             <button
                                                 type="button"
-                                                className="small"
+                                                className="small-d"
                                                 onClick={() => deleteHandler(order)}
                                             >
                                                 Delete

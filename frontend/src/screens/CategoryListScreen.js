@@ -77,18 +77,18 @@ export default function CategoryListScreen(props) {
         <table className="table">
           <thead>
             <tr>
-              <th>ID</th>
               <th>NAME</th>
               <th>DESCRIPTION</th>
+              <th>ACTIONS</th>
             </tr>
           </thead>
           <tbody>
             {categories.map((category) => (
               <tr key={category._id}>
-                <td>{category._id}</td>
+               
                 <td>{category.name}</td>
                 <td>{category.description}</td>
-                <td>
+                <td className="actions">
                   <button
                     type="button"
                     className="small"
@@ -100,7 +100,7 @@ export default function CategoryListScreen(props) {
                   </button>
                   <button
                     type="button"
-                    className="small"
+                    className="small-d"
                     onClick={() => deleteHandler(category)}
                   >
                     Delete

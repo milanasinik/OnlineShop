@@ -1,9 +1,7 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addToCart, createCart, detailsCart, removeFromCart, updateCart } from '../actions/cartActions';
+import { addToCart, removeFromCart } from '../actions/cartActions';
 import MessageBox from '../components/MessageBox';
 
 export default function CartScreen(props) {
@@ -12,36 +10,16 @@ export default function CartScreen(props) {
         ? Number(props.location.search.split('=')[1])
         : 1;
 
-    const userSignIn = useSelector((state) => state.userSignIn);
-    const {userInfo,} = userSignIn;
     const cart = useSelector((state) => state.cart);
-    const { cartItems, } = cart;
-    const cartDetails = useSelector((state) => state.cartDetails);
-    const {cart : detailsC} = cartDetails;
-    
-    const cartUpdate = useSelector((state) => state.cartUpdate);
-    const {
-        cart : cartUpdated,
-        error: errorUpdate,
-        success: successUpdate,
-    } = cartUpdate;
+    const { cartItems, error } = cart;
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if(!userInfo){
-            props.history.push('/signin');
-        }
-        
-        if (!detailsC){
-            
-            dispatch(detailsCart(cart._id));
-        }
         if (productId) {
             dispatch(addToCart( productId, qty));
-            dispatch(updateCart(...cartItems,));
         }
         
-    }, [dispatch, productId, qty, detailsC, userInfo]);
+    }, [dispatch, productId, qty]);
 
     const removeFromCartHandler =(id) =>{
         dispatch(removeFromCart(id));
@@ -56,6 +34,7 @@ export default function CartScreen(props) {
             <div className="row top">
                 <div className="col-2">
                     <h1>Shopping Cart</h1>
+                    {error && <MessageBox variant="danger">{error}</MessageBox>}
                     {cartItems.length == 0 ? (
                         <MessageBox>
                             Shopping Cart is empty! <Link to="/"> Go Shop</Link>

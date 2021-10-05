@@ -51,7 +51,7 @@ export default function CategoryEditScreen(props){
             <form className="form" onSubmit={updateHandler}>
                 <div>
                     <h1>
-                        Category
+                        Category {category.name}
                     </h1>
                 </div>
                 {loadingUpdate && <LoadingBox></LoadingBox>}

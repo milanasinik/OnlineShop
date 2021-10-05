@@ -1,5 +1,4 @@
 import Axios from 'axios';
-import { CART_CREATE_RESET, CART_DETAILS_RESET } from '../constants/cartConstants';
 import { USER_DELETE_FAIL, USER_DELETE_REQUEST, USER_DELETE_SUCCESS, USER_DETAILS_FAIL, USER_DETAILS_REQUEST, USER_DETAILS_SUCCESS, USER_EDIT_FAIL, USER_EDIT_REQUEST, USER_EDIT_SUCCESS, USER_LIST_FAIL, USER_LIST_REQUEST, USER_LIST_SUCCESS, USER_REGISTER_FAIL, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_SIGNIN_FAIL, USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_SIGNOUT, USER_UPDATE_PROFILE_FAIL, USER_UPDATE_PROFILE_REQUEST, USER_UPDATE_PROFILE_SUCCESS } from "../constants/userConstants"
 
 export const signin = (email, password) => async (dispatch) => {
@@ -43,9 +42,6 @@ export const register = (name, email, password, confirmPassword) => async (dispa
 export const signout = () => (dispatch) => {
     localStorage.removeItem("userInfo");
     localStorage.removeItem("cartItems");
-    localStorage.removeItem("shippingAddress");
-    dispatch({type: CART_DETAILS_RESET});
-    dispatch({type: CART_CREATE_RESET});
     dispatch({ type: USER_SIGNOUT });
 };
 

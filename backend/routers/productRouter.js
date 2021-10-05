@@ -81,6 +81,7 @@ productRouter.post(
             price: 0,
             category: '60c233791207580b34427a1b',
             countInStock: 0,
+            sold: 0,
             rating: 0,
             numReviews: 0,
             description: 'sample description',
@@ -104,6 +105,7 @@ productRouter.put(
             product.image = req.body.image;
             product.category = req.body.category;
             product.countInStock = req.body.countInStock;
+            product.sold = req.body.sold;
             product.description = req.body.description;
             const updatedProduct = await product.save();
             res.send({ message: 'Product updated', product: updatedProduct })

@@ -72,20 +72,24 @@ export default function ProductListScreen(props) {
         <table className="table">
           <thead>
             <tr>
-              <th>ID</th>
               <th>NAME</th>
-              <th>PRICE</th>
+              <th>DESCRIPTION</th>
               <th>CATEGORY</th>
+              <th>PRICE</th>
+              <th>COUNT IN STOCK</th>
+              <th>NUM SOLD </th>
               <th>ACTIONS</th>
             </tr>
           </thead>
           <tbody>
             {products.map((product) => (
               <tr key={product._id}>
-                <td>{product._id}</td>
                 <td>{product.name}</td>
-                <td>{product.price}</td>
+                <td>{product.description}</td>
                 <td>{product.category.name}</td>
+                <td>{product.price}</td>
+                <td>{product.countInStock}</td>
+                <td>{product.sold}</td>
                 <td>
                   <button
                     type="button"
@@ -98,7 +102,7 @@ export default function ProductListScreen(props) {
                   </button>
                   <button
                     type="button"
-                    className="small"
+                    className="small-d"
                     onClick={() => deleteHandler(product)}
                   >
                     {" "}
